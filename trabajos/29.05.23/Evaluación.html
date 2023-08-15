@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       const weather_data = [
+    {
+        "country": "Spain",
+        "city": "Madrid",
+        "forecast": [
+            {
+                "date": "2023-05-29",
+                "temperature": {
+                    "min": 15,
+                    "max": 25
+                },
+                "humidity": 60,
+                "description": "Sunny"
+            },
+            {
+                "date": "2023-05-30",
+                "temperature": {
+                    "min": 18,
+                    "max": 28
+                },
+                "humidity": 55,
+                "description": "Partly cloudy"
+            },
+            {
+                "date": "2023-05-31",
+                "temperature": {
+                    "min": 20,
+                    "max": 30
+                },
+                "humidity": 50,
+                "description": "Clear skies"
+            }
+        ]
+    },
+    {
+        "country": "United States",
+        "city": "New York",
+        "forecast": [
+            {
+                "date": "2023-05-29",
+                "temperature": {
+                    "min": 12,
+                    "max": 22
+                },
+                "humidity": 70,
+                "description": "Cloudy"
+            },
+            {
+                "date": "2023-05-30",
+                "temperature": {
+                    "min": 14,
+                    "max": 25
+                },
+                "humidity": 65,
+                "description": "Rainy"
+            },
+            {
+                "date": "2023-05-31",
+                "temperature": {
+                    "min": 16,
+                    "max": 28
+                },
+                "humidity": 60,
+                "description": "Thunderstorms"
+            }
+        ]
+    },
+    {
+        "country": "France",
+        "city": "Paris",
+        "forecast": [
+            {
+                "date": "2023-05-29",
+                "temperature": {
+                    "min": 14,
+                    "max": 24
+                },
+                "humidity": 55,
+                "description": "Partly cloudy"
+            },
+            {
+                "date": "2023-05-30",
+                "temperature": {
+                    "min": 17,
+                    "max": 27
+                },
+                "humidity": 50,
+                "description": "Sunny"
+            },
+            {
+                "date": "2023-05-31",
+                "temperature": {
+                    "min": 19,
+                    "max": 30
+                },
+                "humidity": 45,
+                "description": "Clear skies"
+            }
+        ]
+    }
+]
+// 1. Cuantos paises hay
+    paises = 0;
+    for(i=0 ; i<weather_data.length ; i++){
+        paises += 1;
+    }
+    document.write("La cantidad de paises que hay es de: " + paises + "<br>" );
+    document.write("_______________________________________________________________" + "<br>");
+
+// 2. Que dia y en que pais se tiene la temperatura mas alta
+    for(i=0 ; i<weather_data.length ; i++){
+        for(x=-1 ; x<weather_data[i]["country"].toString.length ; x++){
+            document.write(weather_data[i]["country"]);
+            temperatura = 0;
+            valor = 0;
+            str_01 = "";
+            for(y=0 ; y<weather_data[i]["forecast"].length; y++){
+                temperatura += weather_data[i]["forecast"][y]["temperature"]["max"] - temperatura;
+                if(valor < temperatura){
+                    valor += temperatura - valor;
+                    str_01 = "";
+                    str_01 += weather_data[i]["forecast"][y]["date"];
+                }
+            }
+            document.write(" En la fecha: " + str_01 + " tuvo la temperatura mas alta de: " + valor + "<br>");
+        }
+    }
+    document.write("_______________________________________________________________" + "<br>");
+
+// 3. En que paises va  a llover en la semana
+    for(i=0 ; i<weather_data.length ; i++){
+        for(x=-1 ; x<weather_data[i]["country"].toString.length ; x++){
+            document.write(weather_data[i]["country"]);
+            temperatura = 0;
+            description = "";
+            description_02 = "";
+            valor = 0;
+            str_01 = "";
+            for(y=0 ; y<weather_data[i]["forecast"].length; y++){
+                description = "";
+                description += weather_data[i]["forecast"][y]["description"];
+                temperatura += weather_data[i]["forecast"][y]["temperature"]["max"] - temperatura;
+                if(description == "Rainy"){
+                    description_02 += description;
+                }
+                if(valor < temperatura){
+                    valor += temperatura - valor;
+                    str_01 = "";
+                    str_01 += weather_data[i]["forecast"][y]["date"];
+                }
+            }
+            if(description_02 == "Rainy"){
+                document.write(" en la semana si va a llover" + "<br>");
+            }
+            else{
+                document.write(" en la semana no va a llover" + "<br>");
+            }
+        }
+    }
+    document.write("_______________________________________________________________" + "<br>");
+
+// 4. Promedio de temperatura minima y maxima de da cada ciudad
+    for(i=0 ; i<weather_data.length ; i++){
+        for(x=-1 ; x<weather_data[i]["city"].toString.length ; x++){
+            document.write(weather_data[i]["city"] + ":<br>");
+            temperatura = 0;
+            temperatura_02 = 0;
+            valor_01a = 0;
+            valor_02a = 0;
+            valor_01 = 0;
+            valor_02 = 0;
+            str_01 = "";
+            for(y=0 ; y<weather_data[i]["forecast"].length; y++){
+                temperatura += weather_data[i]["forecast"][y]["temperature"]["max"];
+                temperatura_02 += weather_data[i]["forecast"][y]["temperature"]["min"];
+                valor_01 = temperatura;
+                valor_02 = temperatura_02;
+            }
+            valor_01a = valor_01/weather_data[i]["forecast"].length;
+            valor_02a = valor_02/weather_data[i]["forecast"].length;
+            document.write(" Promedio de temperatura minima: " + valor_02a + "<br>");
+            document.write(" Promedio de temperatura maxima: " + valor_01a + "<br>");
+        }
+    }
+    document.write("_______________________________________________________________" + "<br>");
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const tiendas = [
+        {
+        "nombre": "Tienda_1",
+        "productos": [
+            {
+            "id": 1,
+            "tipo": "Camisa",
+            "nombre": "Camisa",
+            "precio": 20,
+            "variantes": [
+                { "color": "Rojo", "stock": 10 },
+                { "color": "Azul", "stock": 15 },
+                { "color": "Verde", "stock": 5 }
+            ]
+            },
+            {
+            "id": 2,
+            "tipo": "Pantalón",
+            "nombre": "Pantalón",
+            "precio": 30,
+            "variantes": [
+                { "color": "Negro", "stock": 20 },
+                { "color": "Gris", "stock": 10 }
+            ]
+            }
+        ]
+        },
+        {
+        "nombre": "Tienda_2",
+        "productos": [
+            {
+            "id": 1,
+            "tipo": "Camisa",
+            "nombre": "Camisa",
+            "precio": 25,
+            "variantes": [
+                { "color": "Rojo", "stock": 5 },
+                { "color": "Azul", "stock": 20 },
+                { "color": "Verde", "stock": 8 }
+            ]
+            },
+            {
+            "id": 2,
+            "tipo": "Pantalón",
+            "nombre": "Pantalón",
+            "precio": 35,
+            "variantes": [
+                { "color": "Negro", "stock": 15 },
+                { "color": "Gris", "stock": 12 }
+            ]
+            }
+        ]
+        }
+    ];
+    /*
+    for(i=0 ; i<tiendas.length ; i++){
+        console.log(tiendas[i]["nombre"] + tiendas[i]["productos"]);
+        for(x=0 ; x<tiendas[i]["productos"].length ; x++){
+            console.log(tiendas[i]["productos"][x]);
+            for(y=0 ; y<tiendas[i]["productos"][x]["id", "tipo", "nombre", "precio", "variantes"].length ; y++){
+                console.log(tiendas[i]["productos"][x]["id", "tipo", "nombre", "precio", "variantes"][y]);
+            }
+        }
+    }
+
+    for(i=0 ; i<tiendas.length ; i++){
+        document.write(tiendas[i]["nombre"]);
+        for(x=0 ; x<tiendas[i]["productos"].length ; x++){
+        
+            for(y=0 ; y<tiendas[i]["productos"][x]["id"].toString.length ; y++){
+                document.write ("ID" + tiendas[i]["productos"][x]["id"]);
+            }
+            for(y=0 ; y<tiendas[i]["productos"][x]["tipo"].length(tipo) ; y++){
+                document.write ("Tipo" + tiendas[i]["productos"][x]["tipo"]);
+            }
+            for(y=0 ; y<tiendas[i]["productos"][x]["nombre"] ; y++){
+                document.write ("Nombre" + tiendas[i]["productos"][x]["nombre"]);
+            }
+            for(y=0 ; y<tiendas[i]["productos"][x]["precio"].toString.length ; y++){
+                document.write ("Precio" + tiendas[i]["productos"][x]["precio"]);
+            }
+            for(y=0 ; y<tiendas[i]["productos"][x]["variantes"].length ; y++){
+                document.write ("Variantes" + tiendas[i]["productos"][x]["variantes"]);
+            }
+        }
+    }*/
+    // ejercicio numero 1 Imprimir el nombre de todas las tiendas.
+    for(i=0 ; i<tiendas.length ; i++){
+        document.write(tiendas[i]["nombre"] + "<br>");
+    }
+    document.write("------------------------------------------------------" + "<br>");
+    // ejercicio numero 2 Encontrar el producto más caro de cada tienda.
+    for(i=0 ; i<tiendas.length ; i++){
+        str_01 = "";
+        str_01 += tiendas[i]["nombre"] + " ";
+        for(y=0 ; y<tiendas[i]["productos"][1]["precio"].toString.length ; y++){
+            document.write(str_01 + "el producto mas caro es de: " + tiendas[i]["productos"][1]["precio"] + "<br>");
+        }
+    }
+    document.write("------------------------------------------------------" + "<br>");
+    // ejercicio numero 3 Calcular el valor total del inventario de cada tienda (precio * stock de cada variante).------
+    for(i=0 ; i<tiendas.length ; i++){
+        for(x=0 ; x<tiendas[i]["productos"].length ; x++){
+            nomb = "";
+            nomb += tiendas[i]["productos"][x]["nombre"] + " ";
+            str_01 = "";
+            str_01 += tiendas[i]["nombre"] + " ";
+            precio=0;
+            stock=0;
+            variantes=0;
+            for(y=0 ; y<tiendas[i]["productos"][x]["precio"].toString.length ; y++){
+                precio += tiendas[i]["productos"][x]["precio"];
+            }
+            for(y=0 ; y<tiendas[i]["productos"][x]["variantes"].length ; y++){
+                variantes ++;
+                stock += tiendas[i]["productos"][x]["variantes"][y]["stock"] - stock; 
+                document.write(str_01 + nomb + "variante " + variantes + ": " + precio*stock + "<br>");
+            }
+        }
+    }
+    document.write("------------------------------------------------------" + "<br>");
+    // ejercicio numero 4 Encontrar la tienda con el mayor stock de una variante específica de un producto.
+    for(i=0 ; i<tiendas.length ; i++){
+        for(x=0 ; x<tiendas[i]["productos"].length ; x++){
+            
+            stock=0;
+            for(y=0 ; y<tiendas[i]["productos"][x]["variantes"].length ; y++){
+                for(z=0 ; z<tiendas[i]["productos"][x]["variantes"][y]["stock"].toString.length ; z++){
+                    if(stock < tiendas[i]["productos"][x]["variantes"][y]["stock"]){
+
+                        stock += tiendas[i]["productos"][x]["variantes"][y]["stock"] - stock;
+                    }
+                }
+            }
+            document.write(stock + "<br>");
+        }
+    }
+    document.write("------------------------------------------------------" + "<br>");
+    // ejercicio numero 5 Obtener un array con los nombres de todos los productos de todas las tiendas.
+    for(i=0 ; i<tiendas.length ; i++){
+        str_03 = "";
+        str_01 = "";
+        str_01 += tiendas[i]["nombre"] + " ";
+        str_02 = "";
+        for(x=0 ; x<tiendas[i]["productos"].length ; x++){
+            nombre = "";
+            nomb = tiendas[i]["productos"][x]["nombre"];
+            cant_nomb = tiendas[i]["productos"][x]["nombre"]=1;
+            for(y=0 ; y<cant_nomb ; y++){
+                nombre += nomb;
+            }
+            str_02 += "producto: " + nombre + " ";
+        }
+        str_03 += str_01 + str_02;
+        arr = str_03.split(" ");
+        document.write(arr + "<br>");
+    }
+    document.write("------------------------------------------------------" + "<br>");
+    // ejercicio numero 6 Verificar si todas las tiendas tienen al menos un producto con stock mayor a 10.
+    for(i=0 ; i<tiendas.length ; i++){
+        for(x=0 ; x<tiendas[i]["productos"].length ; x++){
+            cantidad = 10;
+            stock = 0;
+            cant_01 = 0;
+            str_01 = "";
+            str_01 += tiendas[i]["nombre"] + " ";
+            for(y=0 ; y<tiendas[i]["productos"][x]["variantes"].length ; y++){
+                stock = tiendas[i]["productos"][x]["variantes"][y]["stock"].toString.length
+                cant_01 = tiendas[i]["productos"][x]["variantes"][y]["stock"];
+            }
+            if(cantidad <= cant_01){
+                document.write(str_01 + " si tiene mas de 10 stock " + "<br>");
+            }
+        }
+    }
+    document.write("------------------------------------------------------" + "<br>");
+    // ejercicio numero 7 Calcular el promedio de precios de todos los productos de cada tienda. ----------
+    for(i=0 ; i<tiendas.length ; i++){  
+        productos=0;
+        productos += tiendas[i]["productos"].length;
+        precio=0;
+        for(x=0 ; x<tiendas[i]["productos"].length ; x++){
+            for(y=0 ; y<tiendas[i]["productos"][x]["precio"].toString.length ; y++){
+                precio += tiendas[i]["productos"][x]["precio"];
+            }
+        }
+        document.write(precio/productos + "<br>");
+    }
+    document.write("------------------------------------------------------" + "<br>");
+    //ejercicio numero 8 Encontrar la tienda con la mayor cantidad de variantes de productos.
+    for(i=0 ; i<tiendas.length ; i++){
+        mayor = 0;
+        for(x=0 ; x<tiendas[i]["productos"].length ; x++){
+            str_01 = "";
+            str_01 += tiendas[i]["nombre"] + " ";
+            stock = 0;
+            mayor += stock; 
+            for(y=0 ; y<tiendas[i]["productos"][x]["variantes"].length ; y++){
+                for(z=0 ; z<tiendas[i]["productos"][x]["variantes"][y]["stock"].toString.length ; z++){
+                    if(stock < tiendas[i]["productos"][x]["variantes"][y]["stock"]){
+                        stock += tiendas[i]["productos"][x]["variantes"][y]["stock"] - stock;
+                    }
+                }
+            }
+            if(mayor<stock){
+                mayor += stock - mayor;
+            }
+        }
+        if(stock<=mayor){
+            document.write(str_01 + "stock mayor = " +mayor + "<br>");
+        }
+    }
+    </script>
+</body>
+</html>

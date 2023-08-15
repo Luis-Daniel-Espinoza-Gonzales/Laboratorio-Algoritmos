@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //ejemplo.
+       /* var notas = ['Pablo','Nadia','Marcos','Soledad'];
+        for(i=0;i<notas.length;i++) {
+            console.log(notas[i]);
+        }
+    
+        var notas = [
+            {'nombre':'Pablo','apellido':'Fiscella'},
+            {'nombre':'Nadia','apellido':'Fiscella'},
+            {'nombre':'Marcos','apellido':'Fiscella'},
+            {'nombre':'Soledad','apellido':'Fiscella'}
+        ];
+       
+        for(i=0;i<notas.length;i++) {
+            console.log(notas[i]['nombre'] + ', ' + notas[i]['apellido']);
+        }
+        */
+        //ejercicio.1
+        var alumnos = [
+            {'nombre':'Pablo','apellido':'Fiscella','notas':[10,2,3]},
+            {'nombre':'Nadia','apellido':'Fiscella','notas':[10,5,8]},
+            {'nombre':'Marcos','apellido':'Fiscella','notas':[10,4,10]},
+            {'nombre':'Soledad','apellido':'Fiscella','notas':[10,2,5]}
+        ];
+       
+        for(i=0;i<alumnos.length;i++) {
+            console.log(alumnos[i]['nombre'] + ', ' + alumnos[i]['apellido']);
+            var cont=0;
+            for(x=0;x<alumnos[i]['notas'].length;x++) {
+                cont += alumnos[i]['notas'][x];
+            }
+            console.log(cont/alumnos[i]['notas'].length);
+        }
+
+        // Nombre   Apellido   B1   B2   B3   B4   N.Final
+        // ejercicio.2
+        var alumnos = [
+            {
+                "nombre":"Pablo","apellido":"Fiscella","notas":{"B1":[10,4,5,4,10],"B2":[10,4,5,4,10],"B3":[10,4,5,4,10],"B4":[10,4,5,4,10]}
+            },
+            {
+                "nombre":"Maria","apellido":"Suarez","notas":{"B1":[10,4,5,4,10],"B2":[10,4,5,4,10],"B3":[10,4,5,4,10],"B4":[10,4,5,4,10]}
+            }
+        ]
+        table = "<table border=1>";
+            for(i=0;i<alumnos.length;i++){
+                table += "<tr>";
+                    table += "<td>" + (alumnos[i]['nombre']) + "</td>";
+                    table += "<td>" + (alumnos[i]['apellido']) + "</td>";
+                    var notas = alumnos[i]["notas"];
+                    for(x=0;x<alumnos[i]['notas']["B1", "B2", "B3", "B4"].length;x++) {
+                        table += "<td>";
+                            (alumnos[i]['notas']["B1", "B2", "B3", "B4"][x]);
+                        table += "</td>";
+                    }
+                table += "</tr>";
+            }
+        table += "</table>";
+        document.write(table);
+
+
+
+
+
+        const equipos = [
+        { nombre: "Equipo A", jugadores: ["Juan", "Pedro", "María"] },
+        { nombre: "Equipo B", jugadores: ["Ana", "Luis", "Carlos"] }
+        ];
+
+        equipos.forEach((equipo) => {
+        console.log(equipo.nombre);
+        equipo.jugadores.forEach((jugador) => {
+            console.log(jugador);
+        });
+        });
+    </script>
+</body>
+</html>

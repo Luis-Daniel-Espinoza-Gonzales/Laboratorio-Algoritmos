@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>  
+    <div id="contenedor"></div>
+    <script>
+        hola = "hola";
+        cars = ["Lexus", "Seat", "Saab", "Volvo", "BMW", "Fiat", "Audi", "Ford"];
+        tabla = "<table border=1>";
+            for(i=0 ; i< cars.length ; i++){
+                tabla+="<tr onclick='mostrar_información(\""+cars[i]+"\")'>";
+                    tabla+="<td><img src='"+cars[i]+".jpg'></td><td>" + cars[i] + "</td><td>"+hola+"</td>"
+                tabla+="</tr>";
+            }
+        tabla += "</table>";
+        document.getElementById("contenedor").innerHTML = tabla;
+
+        function mostrar_información(marca){
+            if(marca = "Seat"){
+                alert("La compañía fue fundada en 1989 en Nagoya (Japón), y fue concebida como la división de lujo de Toyota para el mercado estadounidense. De hecho, aunque es de origen japonés, Lexus significa Luxury EXport United States.");
+            }
+            else if(marca = "Lexus"){
+                alert("falso");
+            }
+        }
+    </script>
+</body>
+</html>

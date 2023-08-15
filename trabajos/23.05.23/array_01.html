@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const tienda = {
+            "nombre": "Mi Tienda",
+            "productos": [
+              {
+                "id": 1,
+                "tipo": "Camisa",
+                "nombre": "Camisa",
+                "precio": 20,
+                "variantes": [
+                  { "color": "Rojo", "stock": 10 },
+                  { "color": "Azul", "stock": 15 },
+                  { "color": "Verde", "stock": 5 }
+                ]
+              },
+              {
+                "id": 2,
+                "tipo": "Pantalón",
+                "nombre": "Pantalón",
+                "precio": 30,
+                "variantes": [
+                  { "color": "Negro", "stock": 20 },
+                  { "color": "Gris", "stock": 10 }
+                ]
+              }
+            ]
+          };
+         
+        // ejercicio numero 1 Imprimir el nombre de la tienda.
+        document.write(tienda.nombre + "<br>");
+        document.write("------------------------------------------------------" + "<br>");
+
+        // ejercicio numero 2 Imprimir el precio de la segunda variante de la primera camisa.
+        for(i=0 ; i<tienda.productos[0]["precio"].toString.length ; i++){
+          document.write(tienda.productos[0]["precio"] + "<br>");
+        }
+        document.write("------------------------------------------------------" + "<br>");
+
+        // ejercicio numero 3 Imprimir la cantidad de productos en la tienda.
+        document.write("La cantidad de productos que hay es de: " + tienda.productos.length + "<br>");
+        document.write("------------------------------------------------------" + "<br>");
+
+        // ejercicio numero 4 Imprimir el stock de la variante "Azul" de la primera camisa.
+        color = tienda.productos[0]["variantes"][1]["color"];
+        stock = tienda.productos[0]["variantes"][1]["stock"];
+        document.write(color + ": " + stock + "<br>");
+        document.write("------------------------------------------------------" + "<br>");
+
+        // ejerciciio numero 5 Imprimir el tipo de producto y precio de cada producto en la tienda.
+        for(i=0 ; i<tienda.productos.length ; i++){
+          producto = "";
+          producto += tienda.productos[i]["tipo"];
+          for(x=0 ; x<tienda.productos[i]["precio"].toString.length ; x++){
+            precio = "";
+            precio += tienda.productos[i]["precio"];
+          }
+          document.write("El precio de " + producto + " es de: " + precio + "<br>");
+        }
+        document.write("------------------------------------------------------" + "<br>");
+
+        // ejercicio numero 6 Imprimir el nombre de cada producto y sus variantes disponibles.
+        for(i=0 ; i<tienda.productos.length ; i++){
+          producto = "";
+          producto += tienda.productos[i]["nombre"];
+          document.write("El nombre del producto es: " + producto + "<br>");
+          for(x=0 ; x<tienda.productos[i]["variantes"].length ; x++){
+            color = tienda.productos[i]["variantes"][x]["color"];
+            stock = tienda.productos[i]["variantes"][x]["stock"]; 
+            document.write(" colores disponibles: " + color + " con stock disponibles: " + stock + "<br>");
+          }
+        }
+        document.write("El precio de " + producto + " es de: " + precio + "<br>");
+        document.write("------------------------------------------------------" + "<br>");
+
+        // ejercicio numero 7 Calcular el total de stock de todas las variantes de todos los productos en la tienda.
+        cant_stock = 0;
+        for(i=0 ; i<tienda.productos.length ; i++){
+          for(x=0 ; x<tienda.productos[i]["variantes"].length ; x++){
+            stock = tienda.productos[i]["variantes"][x]["stock"]; 
+            cant_stock += stock;
+          }
+        }
+        document.write("El total stock de todos los producto es de: " + cant_stock + "<br>");
+        document.write("------------------------------------------------------" + "<br>");
+
+        // ejercicio numero 8 Encontrar el producto con el mayor precio en la tienda.
+        stock_02 = 0;
+        for(i=0 ; i<tienda.productos.length ; i++){
+          producto = "";
+          producto += tienda.productos[i]["nombre"];
+          stock = 0;
+          for(x=0 ; x<tienda.productos[i]["variantes"].length ; x++){
+            stock += tienda.productos[i]["variantes"][x]["precio"] - stock;
+            if(stock_02 < stock){
+              stock_02 = stock;
+            }
+          }
+          if(stock > stock_02){
+            document.write(stock_02);
+          }
+        }
+
+        document.write("El producto mas caro es " + producto + " con el precio: " + precio + "<br>");
+    </script>
+</body>
+</html>

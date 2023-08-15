@@ -1,0 +1,12 @@
+div.col{
+    border: solid 2px black;
+    border-radius: 5px;
+    padding: 0px 30px 0px 30px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 10px;
+    background-color: antiquewhite;
+    transition: tranform .1s;
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+
+        // $.ajax({
+        //     url: 'https://api.themoviedb.org/3/movie/539?api_key=f5f6ff16d59df52e9bbe6b76f88b7886',
+        //     type: 'GET',
+        //     dataType: 'json',
+        //     success: function (data) {
+        //         str = ''
+        //         str+= "<div class='row text-center'>"
+        //             str+= "<div class='col'>"   
+        //    str += '<img src=https://image.tmdb.org/t/p/w500' + data.belongs_to_collection.poster_path + ">";
+        //    str+= "</div>"
+        //    str+= "<div class='col'>"
+        //     str+= "<div class='col'>"  
+        //    str += data.belongs_to_collection.name;
+        //    str+= "</div>"
+        //    str+= "<div class='col'>"  
+        //     str += "Genero: "
+        //    data.genres.forEach(objeto => {
+        //     str+= objeto.name + " "
+        //    });
+        //    str+= "</div>"
+        //    str+= "<div class='col'>"  
+        //     str+= 'Idioma: '
+        //     str += data.original_language + "<br>"
+        //     str+= "</div>"
+        //     str += data.original_title + "<br>"
+        // str+= "<div class='col'>"
+        //     str += data.overview
+        // str+= "</div>"
+
+        //     str+= "</div>"
+        //     str+= "</div>"
+        //         $('#result').html(str)
+        //     }
+        // })
+
+        $.ajax({
+
+            url: 'https://api.themoviedb.org/3/genre/movie/list?api_key=0e72c32f18442a694f54726ee7d10a33',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data_01) {
+                str = '';
+                for(x=0 ; x<data_01['genres'].length ; x++){
+                    str_02 = 0;
+                    str_02 = data_01.genres[x].id;
+                    $.ajax({
+                        url: 'https://api.themoviedb.org/3/discover/movie?api_key=0e72c32f18442a694f54726ee7d10a33&with_genres='+str_02+'&page=1',
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (data_02) {
+                            for (i = 1; i <= data_02.total_pages; i++) {
+                                $.ajax({
+                                    url: 'https://api.themoviedb.org/3/discover/movie?api_key=0e72c32f18442a694f54726ee7d10a33&with_genres='+str_02+'&page='+i,
+                                    type: 'GET',
+                                    dataType: 'json',
+                                    success: function (data_03) {
+                                         for(z=0 ; z<=data_03["results"].length ; z++){
+                                            for(c=0 ; c<=data_03["results"][z]["genre_ids"].length ; c++){
+                                                if(data_01["genres"][x].id == data_03["results"][z]["genre_ids"][c]){
+                                                  str += '<img src=https://image.tmdb.org/t/p/w500' + data_03["results"][z].poster_path + ">";
+                                                }
+                                            }
+                                        }
+                                    }
+                                })
+                            }
+                        }
+                    });
+                    $('#result').html(str);
+                }
+            }
+        });
+
+    </script>
+</head>
+
+<body>
+    <div id="result"></div>
+</body>
+
+</html>

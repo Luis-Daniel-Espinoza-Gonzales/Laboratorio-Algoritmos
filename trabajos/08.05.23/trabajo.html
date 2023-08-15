@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const nombres = ["Carlos", "Karina", "Luciana", "Mariana", "Dario", "Pedro"];
+        var i = 0;
+        var buscar = "C";
+        var nombres_02 = "";
+        var nombre = ["Mario", "Carlos"];
+        buscar_C();
+        function buscar_C(){
+            for(i ; i < nombres.length ; i++ ){
+                document.write(nombres[i] + "<br>");
+                if(nombres[i].includes(buscar)){
+                    alert(nombres[i] + " comienza con " + buscar);
+                }
+                else{
+                    alert(nombres[i] + " no comienza con " + buscar);
+                }
+            }
+        }
+        var resultado = booleano(nombre);
+        function booleano(nombre){
+            var i = 0;
+            var resultado = []
+            for(i ; i < nombre.length ; i++ ){
+                if(nombres.indexOf(nombre[i]) !== -1){
+                    resultado.push("si esta " + nombre[i]);
+                }
+                else{
+                    resultado.push("no esta " + nombre[i]);
+                }
+            }
+            return resultado;
+        }
+
+        document.write(resultado + "<br>");
+        var eliminar = eliminar();
+        function eliminar(){
+            nombres.splice(3,1);
+        }
+        document.write(eliminar);   
+        var convertir = convertir();
+        function convertir(){
+            var i = 0;
+            for(i ; i < nombres.length ; i++ ){
+                nombres_02 += nombres[i] + "-";
+            }
+            document.write(nombres_02 + "<br>");
+
+            var array = nombres_02.split("-");
+            array.splice(0,1);
+            document.write(array);
+        }
+        document.write(convertir);
+    </script>
+</body>
+</html>

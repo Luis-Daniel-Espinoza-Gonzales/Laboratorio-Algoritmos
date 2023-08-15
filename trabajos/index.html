@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const cars = ["Saab 2 ", "Volvo 3 ", "BMW 4 ","FIAT 5 "];
+        document.write(cars + "<br>");
+
+        cars.push("Audi 6 ", "Ford 7 ");
+        document.write(cars + "<br>");
+
+        cars.unshift("Lexus 0 ", "Seat 1 ");
+        document.write(cars + "<br>");
+
+        cars.splice(4,1);
+        document.write(cars + "<br>");
+
+        cars.shift();
+        document.write(cars + "<br>");
+
+        cars.pop();
+        document.write(cars + "<br>");
+
+        cars.unshift("comienzo ");
+        document.write(cars + "<br>");
+
+        cars.splice(5,0, "nuevo ");
+        document.write(cars + "<br>");
+
+        cars.splice(3,0, "medio ");
+        document.write(cars + "<br>");
+            
+        for(i=0 ; i<cars.length ; i++ ){
+            document.write(cars[i]);
+        }
+        </script>
+    <table border="1">
+        <td>
+        <script>
+        for(i=0 ; i<cars.length ; i++){
+            
+                "<tr>"
+                    document.write(cars[i]);
+                "</tr>"
+            
+        }
+        </script>
+        </td>
+    </table>
+    
+</body>
+</html>

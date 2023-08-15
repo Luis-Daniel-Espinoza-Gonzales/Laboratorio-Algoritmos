@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+            url : 'https://rickandmortyapi.com/api/episode',
+            type: 'GET',
+            dataType: 'json',
+            async: false,
+            success: function(data){
+                var str_06 = "";
+                var str_05 = 0;
+                var str_04 = 0;
+                var str_03 = 0;
+                var str_02 = 0;
+                var str_01 = "";
+                str_01 += data["info"].count;
+                $.ajax({
+                    url : 'https://rickandmortyapi.com/api/character?=1',
+                    type: 'GET',
+                    dataType: 'json',
+                    async: false,
+                    success: function(data){                   
+                        for(x=1 ; x<data["info"]["pages"] ; x++){
+                            var paginas = 0 
+                            paginas += x 
+                            $.ajax({
+                                url : 'https://rickandmortyapi.com/api/character?page='+paginas,
+                                type: 'GET',
+                                dataType: 'json',
+                                async: false,
+                                success: function(data01){                    
+                                    for(z=0 ; z<data01["results"].length ; z++){
+                                        if(data01["results"][z]["gender"] == "Male"){
+                                            str_02 += 1
+                                        }
+                                        if(data01["results"][z]["gender"] == "Female"){
+                                            str_03 += 1
+                                        }
+                                        if(data01["results"][z]["origin"].name == "Earth (Replacement Dimension)"){
+                                            str_04 += 1
+                                        }
+                                        if(data01["results"][z]["origin"].name == "Earth (C-137)"){
+                                            str_05 += 1
+                                            str_06 += data01["results"][z].name + "<br>"
+                                        }
+                                    }
+                                }
+                            });  
+                        }
+                    }
+                });  
+                document.write("La cantidad de capitulos que hay de rick and morty es de: " + str_01 + "<br>");
+                document.write("La cantidad de personajes masculinos que hay de rick and morty es de: " + str_02 + "<br>");
+                document.write("La cantidad de personajes femeninos que hay de rick and morty es de: " + str_03 + "<br>");
+                document.write("La cantidad de personajes que son de la Earth (Replacement Dimension) en rick and morty es de: " + str_04 + "<br>");
+                document.write("La cantidad de personajes que son de la Earth (C-137) en rick and morty es de: " + str_05 + "<br>");
+                document.write("Y los personajes que viven pertenecen a la Earth (C-137) son: " + "<br>");
+                document.write(str_06)
+            }
+            });  
+        });
+    </script>
+</body>
+</html>
