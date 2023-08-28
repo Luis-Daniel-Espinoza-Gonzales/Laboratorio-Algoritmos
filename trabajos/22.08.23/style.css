@@ -1,0 +1,45 @@
+body{
+    display: grid;
+    place-items: center;
+    background: linear-gradient(to right, rgb(60, 4, 35), black 25% 75%, rgb(31, 8, 72));
+
+}
+#result_01{
+    max-width: 1250px;
+}
+.content-img{
+    position: relative;
+    display: inline-block;
+    margin: 12px;
+    transition: transform 200ms ease;
+}
+.content-img:hover{
+    filter: brightness(25%);
+}
+.original_title{
+    visibility: hidden;
+    position: absolute;
+    top: 2px;
+}
+.overview{
+    visibility: hidden;
+    position: absolute;
+    top: 60px;
+}
+.content-img:hover .original_title, 
+.content-img:hover .overview{
+    visibility: visible;
+    color: gray;
+    filter: brightness(175%);
+}
+.content-img:hover img{
+    transform: scale(1.1);
+}
+.btn_page-02{
+    padding: 5px;
+    border-radius: 5px;
+}
+.btn_page-03{
+    padding: 10px;
+    border-radius: 5px;
+}
