@@ -1,0 +1,53 @@
+<html>
+     <!-- url de info: https://api.themoviedb.org/3/discover/movie?api_key=289e1cd788cc62cc91fb158573e14c99
+     url de géneros : https://api.themoviedb.org/3/genre/movie/list?api_key=f5f6ff16d59df52e9bbe6b76f88b7886&language=${language} -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>;    
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<body>    
+    <div id="botones"></div>
+    <div id='peliculas'></div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" id="1">1</a></li>
+            <div style="display: flex;" id="paginador">
+               
+            </div>
+            <li class="page-item"><a class="page-link"  id="30">30</a></li>
+        </ul>
+    </nav>
+    <script>
+        nroPaginas = 1
+        pagina(nroPaginas+5, nroPaginas)
+
+        function pagina(n_pagina, cant_pag) {
+            str = "";
+            str_01 = 0; 
+            for(x=cant_pag -2 ; x < n_pagina+(cant_pag); x++) {
+                if(x < 1 || x> 30){
+
+                }
+                else if(x==1 || x==30){
+                    str_01 = x
+                    str += `            
+                        <li class="page-item" onclick='pagina(`+4+`,`+x+`)'><a class="page-link btn_pag" id="`+x+`x">`+x+`</a></li>            
+                    `
+                }
+                else{
+                    str += `            
+                        <li class="page-item" onclick='pagina(`+4+`,`+x+`)'><a class="page-link btn_pag" id="`+x+`x">`+x+`</a></li>            
+                    `
+                }   
+            }            
+            $("#paginador").html(str);
+            $("#"+cant_pag+"x").css('background-color','red');
+            if(str_01 == 1 || str_01 == 30){
+                $("#"+cant_pag).css('background-color','red');
+            }  
+            else{
+                $("#"+cant_pag).css('background-color','whire');
+            }
+        }
+    </script>
+
+</body>
+</html>
