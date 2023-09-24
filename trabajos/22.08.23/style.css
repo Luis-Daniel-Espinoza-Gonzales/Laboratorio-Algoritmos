@@ -30,7 +30,7 @@ body{
 .content-img:hover .overview{
     visibility: visible;
     color: gray;
-    filter: brightness(175%);
+    filter: brightness(1000%);
 }
 .content-img:hover img{
     transform: scale(1.1);
