@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejemplo de solicitud a la API de TMDb con jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="generos"></div>
+
+    <script>
+        $(document).ready(function() {
+            // URL de la API de TMDb para obtener géneros de películas de la página 1
+            var apiUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=0e72c32f18442a694f54726ee7d10a33&with_genres=28';
+
+            // Realizar una solicitud GET a la API de TMDb
+            $.ajax({
+                url: apiUrl,
+                type: 'GET',
+                success: function(data) {
+                    // Obtener la lista de películas
+                    var movies = data.results;
+                    var uniqueGenres = {};
+
+                    // Recorrer las películas y extraer los géneros únicos
+                    for (var i = 0; i < movies.length; i++) {
+                        var movieGenres = movies[i].genre_ids;
+
+                        // Recorrer los géneros de la película
+                        for (var j = 0; j < movieGenres.length; j++) {
+                            var genreId = movieGenres[j];
+                            uniqueGenres[genreId] = true;
+                        }
+                    }
+
+                    // Mostrar los géneros únicos en la página
+                    var genreIds = Object.keys(uniqueGenres);
+                    $('#generos').html('Géneros únicos: ' + genreIds.join(', '));
+                },
+                error: function(error) {
+                    console.error('Error al obtener datos de la API de TMDb:', error);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
